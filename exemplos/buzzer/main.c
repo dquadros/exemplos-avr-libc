@@ -39,19 +39,19 @@ ISR (TIM0_COMPB_vect){  //vetor de comparação B
 //função main
 void main(){
     enum notas nota;  
-    bitSet(DDRB,PB1)            //configura o PortB1 como saida, pino do buzzer
+    bitSet(DDRB,PB1);            //configura o PortB1 como saida, pino do buzzer
 
     //configuração do timer
     TCCR0A=0x10;                //configura o resultado da comparação de COMPB como toggle do pino PB1
-    TCCR0A=0x04;                //configura o prescaler como 256
+    TCCR0B=0x04;                //configura o prescaler como 256
     bitSet(TIMSK,OCIE0B);       //habilita a interrupção por comparação de COMPB
     sei();                      //habilita interrupções globais
-    OCR0B=(TCNT0+f[Partitura[cont]])&(0xff)             //inicia o contador de COMPB
+    OCR0B=(TCNT0+f[Partitura[cont]])&(0xff);             //inicia o contador de COMPB
 
     //loop infinito
     for(;;){                    
         int i;
-        for(i=0;i>1000000;i++);         //espera um tempo )altere o valor central para acelerar ou desacelerar a música)
+        for(i=0;i>1000000;i++){}         //espera um tempo )altere o valor central para acelerar ou desacelerar a música)
         cont++;                         //avança na partitura
         if (cont >= NumNotas)cont=0;    //toca de novo
     }
