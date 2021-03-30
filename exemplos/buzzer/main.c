@@ -40,7 +40,6 @@ ISR (TIM0_COMPB_vect){  //vetor de comparação B
 void main(){
     enum notas nota;  
     bitSet(DDRB,PB1);            //configura o PortB1 como saida, pino do buzzer
-
     //configuração do timer
     TCCR0A=0x10;                //configura o resultado da comparação de COMPB como toggle do pino PB1
     TCCR0B=0x04;                //configura o prescaler como 256
